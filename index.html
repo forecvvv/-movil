@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Datos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Generador de Datos Falsos</h2>
+        
+        <form method="POST">
+            <label for="telefono">Ingrese su número (8 dígitos, empieza con 6):</label>
+            <input type="text" id="telefono" name="telefono" value="{{ telefono }}" required>
+            <button type="submit">Generar Datos</button>
+        </form>
+
+        {% if datos %}
+            {% if datos.error %}
+                <p class="error">{{ datos.error }}</p>
+            {% else %}
+                <div class="resultado">
+                    <p><strong>Correo:</strong> {{ datos.correo }}</p>
+                    <p><strong>Nombre 1:</strong> {{ datos.nombre1 }}</p>
+                    <p><strong>Teléfono 1:</strong> {{ datos.telefono1 }}</p>
+                    <p><strong>Nombre 2:</strong> {{ datos.nombre2 }}</p>
+                    <p><strong>Teléfono 2:</strong> {{ datos.telefono2 }}</p>
+                    <p><strong>Dirección:</strong> {{ datos.direccion }}</p>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
